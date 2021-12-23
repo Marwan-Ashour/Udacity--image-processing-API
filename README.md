@@ -6,7 +6,6 @@
 # Scripts:
 
 * build project: npm run build
-* test project: npm run jasmine
 * build and test project: npm run test
 * linting : npm run lint
 * run project: npm start
