@@ -1,22 +1,17 @@
-// const myFunc = (num: number): number => {
-//     return num * num;
-//   };
-  
-//   export default myFunc;
-
-//============================================
 
 // import express and creating the global app
-  import express from 'express';
+  import express from "express";
+  // import routes
+  import routes from "./routes/index";
   const app = express();
   const port = 7000;
 
 // creat endpoint 
-app.get('/', (req, res) => {
-  res.send('Hello, world!');
- });
+app.use("/api", routes);
 
  // creat server, listen to port & output a message to the console
  app.listen(port, ()=> {
   console.log(`server started at http://localhost:${port}`)
  });
+
+ export default app;
