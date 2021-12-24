@@ -27,13 +27,18 @@ const  imageConverter=async (req: express.Request, res: express.Response) => {
     res.sendFile(file_path);
   } else {
     try {
-      const image_path = await manipulateImage(image, width, height);
+      const image_path =await manipulateImage (image, width, height);
       res.sendFile(image_path);
     } catch (e) {
       const error = e as Error;
       if (error.message == "Image not available") {
         res.statusCode = 404;
         res.send("404: Image not available. Please enter a correct image name.");
+      }
+
+        if (!(req.query.imageName )) {
+          res.statusCode = 405;
+          return res.send("405: Invalid image name");
       }
     }
   }
