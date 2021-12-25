@@ -1,3 +1,4 @@
+
 import express from "express";
 import checkImage from "../coordinator/checkImage";
 import {manipulateImage}  from "../coordinator/processImage";
@@ -13,14 +14,18 @@ const  imageConverter=async (req: express.Request, res: express.Response) => {
   console.log(resizedDir)
   const file_path = path.join(resizedDir,`${image.toLowerCase()}(${width}x${height}).jpg`);
 
+ // check if any of the params is missing
   if (!(req.query.image && req.query.width && req.query.height)) {
     res.statusCode = 400;
-    return res.send("400: Invalid request");
+    return res.send("400: Invalid request, please enter the missing params value");
   }
+
+  // check if width or height value is missing or equals Zero
   if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
     res.statusCode = 400;
-    return res.send("Invalid dimensions.");
+    return res.send("Invalid dimensions, please enter positive value for width & height");
   }
+
   const reflectedImage = await checkImage(image, width , height);
 
   if (reflectedImage) {
@@ -36,10 +41,7 @@ const  imageConverter=async (req: express.Request, res: express.Response) => {
         res.send("404: Image not available. Please enter a correct image name.");
       }
 
-        if (!(req.query.imageName )) {
-          res.statusCode = 405;
-          return res.send("405: Invalid image name");
-      }
+          
     }
   }
 };
