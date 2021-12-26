@@ -11,7 +11,7 @@ const  imageConverter=async (req: express.Request, res: express.Response) => {
   const height = parseInt(req.query.height as string);
 
   const resizedDir = path.join(__dirname, "../../images/thumbnails/");
-  console.log(resizedDir)
+ 
   const file_path = path.join(resizedDir,`${image.toLowerCase()}(${width}x${height}).jpg`);
 
  // check if any of the params is missing
