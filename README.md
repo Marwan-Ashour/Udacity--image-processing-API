@@ -17,6 +17,6 @@ for instance:
 
 http://localhost:7000/api/imageConverter?image=fjord&width=300&height=300
 
-* images : encenadaport.jpg, fjord.jpg, icelandwaterfall.jpg, palmtunnel.jpg, santamonica.jpg
+* images :  fjord.jpg
 * width : >=1
 * height: >=1
