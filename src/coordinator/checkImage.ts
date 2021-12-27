@@ -14,7 +14,7 @@ const checkImage = async (
   const file_path = path.join(resizedDir,`${imageName.toLowerCase()}(${width}x${height}).jpg`);
 
  
-  // return fs.existsSync(file_path);
+  // if( fs.existsSync(resizedDir)){
 
   
   try {
@@ -22,10 +22,8 @@ const checkImage = async (
     return file_path;
   } catch {
     return "";
-  }
-
+  }     
    
 };
 
 export default checkImage;
-
